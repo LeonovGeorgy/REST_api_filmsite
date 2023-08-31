@@ -5,13 +5,14 @@ app = Flask(__name__)
 api = Api()
 
 films = {
-    1: {"name": "Python", "video": 15},
-    2: {"name": "Java", "video": 10}
+    1: {"film": "Avatar", "duration": 2.7},
+    2: {"film": "Alien", "duration": 1.8},
+
 }
 
-parser = reqparse.RequestParser()
-parser.add_argument("name", type=str)
-parser.add_argument("video", type=int)
+parser = reqparse.RequestParser()      # описываем в каком виде получаем инфо по фильмам
+parser.add_argument("film", type=str)
+parser.add_argument("duration", type=float)
 
 class Main(Resource):
     def get(self, films_id):
